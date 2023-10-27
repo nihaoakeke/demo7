@@ -8,6 +8,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.blue.dao.*;
 import com.blue.domain.*;
+import com.blue.service.BloagService;
 import com.blue.service.LinkService;
 import com.blue.utils.SenstiveUtils;
 import com.google.gson.Gson;
@@ -92,6 +93,9 @@ class Demo7ApplicationTests {
   private LinkDao linkDao;
 
   @Autowired
+  private BloagService bloagService;
+
+  @Autowired
   private LinkService linkService;
 
     @Test
@@ -100,19 +104,21 @@ class Demo7ApplicationTests {
 //        Link link = linkService.selectByFT(2,3);
 //        link.setMessage("dadas");
 //        linkDao.updateById(link);
-        Set<String> blogSet = new HashSet<>();
-        QueryWrapper qw = new QueryWrapper();
-        qw.select("blogType");
-        List<Blog> blogList = blogDao.selectList(qw);
-        Iterator<Blog> iterator = blogList.iterator();
-        while (iterator.hasNext()){ //判断迭代器是否有元素
-            Blog blog = iterator.next();//获取集合下一个元素
-            String name = blog.getBlogType();
-            blogSet.add(name);
-        }
+//        Set<String> blogSet = new HashSet<>();
+//        QueryWrapper qw = new QueryWrapper();
+//        qw.select("blogType");
+//        List<Blog> blogList = blogDao.selectList(qw);
+//        Iterator<Blog> iterator = blogList.iterator();
+//        while (iterator.hasNext()){ //判断迭代器是否有元素
+//            Blog blog = iterator.next();//获取集合下一个元素
+//            String name = blog.getBlogType();
+//            blogSet.add(name);
+//        }
+//
+//        System.out.println(blogSet);
 
-        System.out.println(blogSet);
-
+        List<Blog> blogList = bloagService.selectBlogBytypeDesc("后端");
+        System.out.println(blogList);
 
 //        QueryWrapper qw = new QueryWrapper();
 //        qw.eq("uId",1);

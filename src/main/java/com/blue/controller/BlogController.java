@@ -9,6 +9,7 @@ import com.blue.dao.BlogDao;
 import com.blue.domain.*;
 import com.blue.service.BloagService;
 import com.google.gson.Gson;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -73,14 +74,14 @@ public class BlogController {
         return new Result(code,blog,msg);
     }
 
-    @Log(operation = "根据博客类型进行查询")
-    @GetMapping("/type/{type}")
-    public Result getBytype(@PathVariable String type) {
-        List<Blog> blogList = bloagService.selectBlogBytypeDesc(type);
-        Integer code = blogList != null ? Code.GET_OK : Code.GET_ERR;
-        String msg = blogList != null ? "数据查询成功" : "数据查询失败，请重试！";
-        return new Result(code,blogList,msg);
-    }
+//    @Log(operation = "根据博客类型进行查询")
+//    @GetMapping("/type/{type}")
+//    public Result getBytype(@PathVariable String type) {
+//        List<Blog> blogList = bloagService.selectBlogBytypeDesc(type);
+//        Integer code = blogList != null ? Code.GET_OK : Code.GET_ERR;
+//        String msg = blogList != null ? "数据查询成功" : "数据查询失败，请重试！";
+//        return new Result(code,blogList,msg);
+//    }
 
     @Log(operation = "根据发表的用户进行查询博客详情")
     @GetMapping("/uid/{uid}")
@@ -243,6 +244,18 @@ public class BlogController {
 
     }
 
+    @Log(operation = "根据博客类型进行查询")
+    @PostMapping("/type")
+    public Result getByType(@RequestBody String type) {
+        Map<String, Object> stringHashMap = new HashMap<String, Object>();
+        Gson gson = new Gson();
+        Map map = gson.fromJson(String.valueOf(type), stringHashMap.getClass());
+        List<Blog> blogList = bloagService.selectBlogBytypeDesc((String)map.get("type"));
+        System.out.println("-----------"+type+"---------------------------------------");
+        Integer code = blogList != null ? Code.GET_OK : Code.GET_ERR;
+        String msg = blogList != null ? "数据查询成功" : "数据查询失败，请重试！";
+        return new Result(code,blogList,msg);
+    }
 
 
 }
