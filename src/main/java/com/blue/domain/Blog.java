@@ -39,4 +39,12 @@ public class Blog {
     @TableField(value="uId")
     private Integer uId;
 
+    @TableField(value="blogDescription")
+    private String blogDescription;
+//    @TableField(value="blogContent")
+//    private String blogContent;
+
+    @TableField(value="blogContent")
+    private String blogContent;
+
 }

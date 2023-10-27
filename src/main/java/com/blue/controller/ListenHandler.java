@@ -1,21 +1,17 @@
 package com.blue.controller;
 
 
-import com.blue.domain.Article;
 import com.blue.domain.Blog;
 import com.blue.domain.Comment;
 import com.blue.domain.Reply;
-import com.blue.service.ArticleService;
 import com.blue.service.BloagService;
 import com.blue.service.CommentService;
 import com.blue.service.ReplyService;
 import com.blue.utils.RedisUtil;
 import lombok.extern.slf4j.Slf4j;
-import org.omg.CORBA.PRIVATE_MEMBER;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
-import org.springframework.data.redis.core.DefaultTypedTuple;
 import org.springframework.data.redis.core.ZSetOperations;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -23,7 +19,6 @@ import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
 

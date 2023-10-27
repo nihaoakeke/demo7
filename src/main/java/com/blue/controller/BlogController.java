@@ -145,6 +145,7 @@ public class BlogController {
 //    }
 
 
+    @Log(operation = "得到所有的消息")
     @GetMapping("/getAllType")
     public String getAllType()
     {
@@ -161,6 +162,7 @@ public class BlogController {
         return new Gson().toJson(blogSet);
     }
 
+    @Log(operation = "得到所有数据")
     @GetMapping("/getAllBlog")
     public Result getAllBlog()
     {

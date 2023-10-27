@@ -82,6 +82,36 @@ public class ChatService extends ServiceImpl<ChatDao, Chat> {
         return chatList;
     }
 
+    /**
+     * 查询发出去未读的
+     * @param fromuser
+     * @return
+     */
 
+    public List<Chat> selectMessageByFromUnread(Integer fromuser)
+    {
+        QueryWrapper qw = new QueryWrapper();
+        qw.eq("fromUser",fromuser);
+        qw.orderByDesc("time");
+        qw.eq("flag",0);
+        List<Chat> chatList = chatDao.selectList(qw);
+        return chatList;
+    }
+
+
+    /**
+     * 查询接受消息未读的
+     * @param touser
+     * @return
+     */
+    public List<Chat> selectMessageByToUnread(Integer touser)
+    {
+        QueryWrapper qw = new QueryWrapper();
+        qw.eq("toUser",touser);
+        qw.orderByDesc("time");
+        qw.eq("flag",0);
+        List<Chat> chatList = chatDao.selectList(qw);
+        return chatList;
+    }
 
 }

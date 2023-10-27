@@ -1,4 +1,4 @@
-package com.blue.controller;
+package com.blue.AOP;
 
 import com.blue.config.Log;
 import com.sun.org.slf4j.internal.LoggerFactory;

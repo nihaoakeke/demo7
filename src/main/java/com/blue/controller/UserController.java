@@ -8,6 +8,7 @@ import com.blue.domain.Comment;
 import com.blue.domain.Result;
 import com.blue.domain.User;
 import com.blue.service.UserService;
+import com.blue.utils.MD5Utils;
 import com.blue.utils.TokenUtils;
 import com.vdurmont.emoji.EmojiParser;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,7 +53,7 @@ public class UserController {
         }
         System.out.println(user1.getUPassword());
         System.out.println(user.getUPassword());
-        if(!user1.getUPassword().equals(user.getUPassword()))
+        if(!user1.getUPassword().equals(MD5Utils.md5(user.getUPassword())))
         {
             return new Result(Code.POST_ERR,"","输入的密码错误");
         }
@@ -209,6 +210,8 @@ public class UserController {
     @PostMapping
     public Result save(@RequestBody User user){
 
+        String password = MD5Utils.md5(user.getUPassword());
+        user.setUPassword(password);
        Integer num = userDao.insert(user);
         Integer code = num !=null ? Code.SAVE_OK :Code.SAVE_ERR;
         String msg = num != null?"数据保存成功":"数据保存失败，请重试,请检查是否有信息输入错误";
