@@ -479,3 +479,267 @@ You may wish to exclude one of them to ensure predictable runtime behavior
 2023-10-27 09:17:53 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - redis写入数据库完毕
 2023-10-27 09:17:54 [SpringApplicationShutdownHook] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
 2023-10-27 09:17:54 [SpringApplicationShutdownHook] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2023-10-27 09:21:15 [main] INFO  com.blue.Demo7Application - Starting Demo7Application using Java 1.8.0_231 on SK-20220805NLKE with PID 38008 (D:\code\demo7\target\classes started by 齐进帅 in D:\code\demo7)
+2023-10-27 09:21:15 [main] INFO  com.blue.Demo7Application - No active profile set, falling back to 1 default profile: "default"
+2023-10-27 09:21:16 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2023-10-27 09:21:16 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2023-10-27 09:21:16 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 27 ms. Found 0 Redis repository interfaces.
+2023-10-27 09:21:18 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 80 (http)
+2023-10-27 09:21:18 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2023-10-27 09:21:18 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.80]
+2023-10-27 09:21:18 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2023-10-27 09:21:18 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3248 ms
+2023-10-27 09:21:21 [main] INFO  com.blue.controller.ListenHandler - 数据初始化开始...
+2023-10-27 09:21:21 [main] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2023-10-27 09:21:23 [main] INFO  com.blue.controller.ListenHandler - 数据已写入redis...
+2023-10-27 09:21:23 [main] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page: class path resource [static/index.html]
+2023-10-27 09:21:24 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 80 (http) with context path ''
+2023-10-27 09:21:24 [main] INFO  com.blue.Demo7Application - Started Demo7Application in 10.585 seconds (JVM running for 12.423)
+2023-10-27 09:23:16 [http-nio-80-exec-2] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-10-27 09:23:16 [http-nio-80-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2023-10-27 09:23:16 [http-nio-80-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 3 ms
+2023-10-27 09:23:16 [http-nio-80-exec-2] INFO  com.blue.controller.LogAspect - 方法:com.blue.controller.LinkController.selectMessageBytoUser, 参数:[3], 操作:查询用户的收到的好友请求
+2023-10-27 09:23:16 [http-nio-80-exec-2] INFO  com.blue.controller.LogAspect - 方法:com.blue.controller.LinkController.selectMessageBytoUser, 参数:[3], 操作:查询用户的收到的好友请求, 返回结果:true
+2023-10-27 09:23:31 [http-nio-80-exec-3] INFO  com.blue.controller.LogAspect - 方法:com.blue.controller.LinkController.deleteMessage, 参数:[2, 3], 操作:删除某条好友申请
+2023-10-27 09:23:31 [http-nio-80-exec-3] INFO  com.blue.controller.LogAspect - 方法:com.blue.controller.LinkController.deleteMessage, 参数:[2, 3], 操作:删除某条好友申请, 返回结果:true
+2023-10-27 09:23:40 [http-nio-80-exec-4] INFO  com.blue.controller.LogAspect - 方法:com.blue.controller.LinkController.selectMessageBytoUser, 参数:[3], 操作:查询用户的收到的好友请求
+2023-10-27 09:23:40 [http-nio-80-exec-4] INFO  com.blue.controller.LogAspect - 方法:com.blue.controller.LinkController.selectMessageBytoUser, 参数:[3], 操作:查询用户的收到的好友请求, 返回结果:true
+2023-10-27 09:23:51 [http-nio-80-exec-5] INFO  com.blue.controller.LogAspect - 方法:com.blue.controller.LinkController.selectMessageByFromuser, 参数:[2], 操作:查询本用户发送的好友申请
+2023-10-27 09:23:51 [http-nio-80-exec-5] INFO  com.blue.controller.LogAspect - 方法:com.blue.controller.LinkController.selectMessageByFromuser, 参数:[2], 操作:查询本用户发送的好友申请, 返回结果:true
+2023-10-27 09:24:02 [http-nio-80-exec-6] INFO  com.blue.controller.LogAspect - 方法:com.blue.controller.LinkController.selectMessageByFromuserFlag, 参数:[2], 操作:查询发送出去的申请消息，对方未读的
+2023-10-27 09:24:02 [http-nio-80-exec-6] INFO  com.blue.controller.LogAspect - 方法:com.blue.controller.LinkController.selectMessageByFromuserFlag, 参数:[2], 操作:查询发送出去的申请消息，对方未读的, 返回结果:true
+2023-10-27 09:24:47 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - 开始关闭...
+2023-10-27 09:24:47 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - blogView 更新完毕
+2023-10-27 09:24:47 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - blogView 更新完毕
+2023-10-27 09:24:47 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - blogView 更新完毕
+2023-10-27 09:24:47 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - blogView 更新完毕
+2023-10-27 09:24:47 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - blogView 更新完毕
+2023-10-27 09:24:47 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - blogView 更新完毕
+2023-10-27 09:24:47 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - blogView 更新完毕
+2023-10-27 09:24:47 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - blogView 更新完毕
+2023-10-27 09:24:47 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - blogView 更新完毕
+2023-10-27 09:24:47 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - blogView 更新完毕
+2023-10-27 09:24:47 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - blogView 更新完毕
+2023-10-27 09:24:47 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - blogLike 更新完毕
+2023-10-27 09:24:47 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - blogLike 更新完毕
+2023-10-27 09:24:47 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - blogLike 更新完毕
+2023-10-27 09:24:47 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - blogLike 更新完毕
+2023-10-27 09:24:47 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - blogLike 更新完毕
+2023-10-27 09:24:47 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - blogLike 更新完毕
+2023-10-27 09:24:47 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - blogLike 更新完毕
+2023-10-27 09:24:47 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - blogLike 更新完毕
+2023-10-27 09:24:47 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - blogLike 更新完毕
+2023-10-27 09:24:47 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - blogLike 更新完毕
+2023-10-27 09:24:47 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - blogLike 更新完毕
+2023-10-27 09:24:47 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - cLike 更新完毕
+2023-10-27 09:24:47 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - cLike 更新完毕
+2023-10-27 09:24:47 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - cLike 更新完毕
+2023-10-27 09:24:47 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - cLike 更新完毕
+2023-10-27 09:24:47 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - cLike 更新完毕
+2023-10-27 09:24:47 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - cLike 更新完毕
+2023-10-27 09:24:47 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - cLike 更新完毕
+2023-10-27 09:24:47 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - cLike 更新完毕
+2023-10-27 09:24:47 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - rLikee 更新完毕
+2023-10-27 09:24:47 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - rLikee 更新完毕
+2023-10-27 09:24:47 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - rLikee 更新完毕
+2023-10-27 09:24:47 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - rLikee 更新完毕
+2023-10-27 09:24:47 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - rLikee 更新完毕
+2023-10-27 09:24:47 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - rLikee 更新完毕
+2023-10-27 09:24:47 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - rLikee 更新完毕
+2023-10-27 09:24:47 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - rLikee 更新完毕
+2023-10-27 09:24:47 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - rLikee 更新完毕
+2023-10-27 09:24:47 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - redis写入数据库完毕
+2023-10-27 09:24:47 [SpringApplicationShutdownHook] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2023-10-27 09:24:47 [SpringApplicationShutdownHook] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2023-10-27 09:25:02 [main] INFO  com.blue.Demo7Application - Starting Demo7Application using Java 1.8.0_231 on SK-20220805NLKE with PID 19656 (D:\code\demo7\target\classes started by 齐进帅 in D:\code\demo7)
+2023-10-27 09:25:02 [main] INFO  com.blue.Demo7Application - No active profile set, falling back to 1 default profile: "default"
+2023-10-27 09:25:03 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2023-10-27 09:25:03 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2023-10-27 09:25:03 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 23 ms. Found 0 Redis repository interfaces.
+2023-10-27 09:25:05 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 80 (http)
+2023-10-27 09:25:05 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2023-10-27 09:25:05 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.80]
+2023-10-27 09:25:05 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2023-10-27 09:25:05 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3288 ms
+2023-10-27 09:25:08 [main] INFO  com.blue.controller.ListenHandler - 数据初始化开始...
+2023-10-27 09:25:08 [main] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2023-10-27 09:25:10 [main] INFO  com.blue.controller.ListenHandler - 数据已写入redis...
+2023-10-27 09:25:10 [main] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page: class path resource [static/index.html]
+2023-10-27 09:25:11 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 80 (http) with context path ''
+2023-10-27 09:25:11 [main] INFO  com.blue.Demo7Application - Started Demo7Application in 10.56 seconds (JVM running for 12.481)
+2023-10-27 09:25:20 [http-nio-80-exec-2] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-10-27 09:25:20 [http-nio-80-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2023-10-27 09:25:20 [http-nio-80-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2023-10-27 09:25:20 [http-nio-80-exec-2] INFO  com.blue.controller.LogAspect - 方法:com.blue.controller.LinkController.selectMessageByFromuserFlag, 参数:[2], 操作:查询发送出去的申请消息，对方未读的
+2023-10-27 09:25:20 [http-nio-80-exec-2] INFO  com.blue.controller.LogAspect - 方法:com.blue.controller.LinkController.selectMessageByFromuserFlag, 参数:[2], 操作:查询发送出去的申请消息，对方未读的, 返回结果:true
+2023-10-27 09:25:31 [http-nio-80-exec-3] INFO  com.blue.controller.LogAspect - 方法:com.blue.controller.LinkController.sendMessage, 参数:[Link(linkId=null, fromUser=2, toUser=3, message=nul划局规划啊1231, time=null, flag=null, follow=null, unfriend=null)], 操作:发送好友申请
+2023-10-27 09:25:31 [http-nio-80-exec-3] INFO  com.blue.controller.LogAspect - 方法:com.blue.controller.LinkController.sendMessage, 参数:[Link(linkId=null, fromUser=2, toUser=3, message=nul划局规划啊1231, time=null, flag=null, follow=null, unfriend=null)], 操作:发送好友申请, 返回结果:true
+2023-10-27 09:26:02 [http-nio-80-exec-4] INFO  com.blue.controller.LogAspect - 方法:com.blue.controller.LinkController.selectMessageBytoUserFlag, 参数:[3], 操作:查询本用户未读的好友申请
+2023-10-27 09:26:02 [http-nio-80-exec-4] INFO  com.blue.controller.LogAspect - 方法:com.blue.controller.LinkController.selectMessageBytoUserFlag, 参数:[3], 操作:查询本用户未读的好友申请, 返回结果:true
+2023-10-27 09:51:28 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - 开始关闭...
+2023-10-27 09:51:29 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - blogView 更新完毕
+2023-10-27 09:51:29 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - blogView 更新完毕
+2023-10-27 09:51:29 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - blogView 更新完毕
+2023-10-27 09:51:29 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - blogView 更新完毕
+2023-10-27 09:51:29 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - blogView 更新完毕
+2023-10-27 09:51:29 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - blogView 更新完毕
+2023-10-27 09:51:29 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - blogView 更新完毕
+2023-10-27 09:51:29 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - blogView 更新完毕
+2023-10-27 09:51:29 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - blogView 更新完毕
+2023-10-27 09:51:29 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - blogView 更新完毕
+2023-10-27 09:51:29 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - blogView 更新完毕
+2023-10-27 09:51:29 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - blogLike 更新完毕
+2023-10-27 09:51:29 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - blogLike 更新完毕
+2023-10-27 09:51:29 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - blogLike 更新完毕
+2023-10-27 09:51:29 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - blogLike 更新完毕
+2023-10-27 09:51:29 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - blogLike 更新完毕
+2023-10-27 09:51:29 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - blogLike 更新完毕
+2023-10-27 09:51:29 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - blogLike 更新完毕
+2023-10-27 09:51:29 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - blogLike 更新完毕
+2023-10-27 09:51:29 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - blogLike 更新完毕
+2023-10-27 09:51:29 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - blogLike 更新完毕
+2023-10-27 09:51:29 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - blogLike 更新完毕
+2023-10-27 09:51:29 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - cLike 更新完毕
+2023-10-27 09:51:29 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - cLike 更新完毕
+2023-10-27 09:51:29 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - cLike 更新完毕
+2023-10-27 09:51:29 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - cLike 更新完毕
+2023-10-27 09:51:29 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - cLike 更新完毕
+2023-10-27 09:51:29 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - cLike 更新完毕
+2023-10-27 09:51:29 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - cLike 更新完毕
+2023-10-27 09:51:29 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - cLike 更新完毕
+2023-10-27 09:51:29 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - rLikee 更新完毕
+2023-10-27 09:51:29 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - rLikee 更新完毕
+2023-10-27 09:51:29 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - rLikee 更新完毕
+2023-10-27 09:51:29 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - rLikee 更新完毕
+2023-10-27 09:51:29 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - rLikee 更新完毕
+2023-10-27 09:51:29 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - rLikee 更新完毕
+2023-10-27 09:51:29 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - rLikee 更新完毕
+2023-10-27 09:51:29 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - rLikee 更新完毕
+2023-10-27 09:51:29 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - rLikee 更新完毕
+2023-10-27 09:51:29 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - redis写入数据库完毕
+2023-10-27 09:51:29 [SpringApplicationShutdownHook] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2023-10-27 09:51:29 [SpringApplicationShutdownHook] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2023-10-27 09:53:22 [main] INFO  com.blue.Demo7Application - Starting Demo7Application using Java 1.8.0_231 on SK-20220805NLKE with PID 42476 (D:\code\demo7\target\classes started by 齐进帅 in D:\code\demo7)
+2023-10-27 09:53:22 [main] INFO  com.blue.Demo7Application - No active profile set, falling back to 1 default profile: "default"
+2023-10-27 09:53:24 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2023-10-27 09:53:24 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2023-10-27 09:53:24 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 25 ms. Found 0 Redis repository interfaces.
+2023-10-27 09:53:25 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 80 (http)
+2023-10-27 09:53:25 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2023-10-27 09:53:25 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.80]
+2023-10-27 09:53:25 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2023-10-27 09:53:25 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3126 ms
+2023-10-27 09:53:28 [main] INFO  com.blue.controller.ListenHandler - 数据初始化开始...
+2023-10-27 09:53:28 [main] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2023-10-27 09:53:30 [main] INFO  com.blue.controller.ListenHandler - 数据已写入redis...
+2023-10-27 09:53:30 [main] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page: class path resource [static/index.html]
+2023-10-27 09:53:31 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 80 (http) with context path ''
+2023-10-27 09:53:31 [main] INFO  com.blue.Demo7Application - Started Demo7Application in 10.049 seconds (JVM running for 11.751)
+2023-10-27 09:55:13 [http-nio-80-exec-2] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-10-27 09:55:13 [http-nio-80-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2023-10-27 09:55:13 [http-nio-80-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 2 ms
+2023-10-27 09:57:48 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - 开始关闭...
+2023-10-27 09:57:48 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - blogView 更新完毕
+2023-10-27 09:57:48 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - blogView 更新完毕
+2023-10-27 09:57:48 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - blogView 更新完毕
+2023-10-27 09:57:48 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - blogView 更新完毕
+2023-10-27 09:57:48 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - blogView 更新完毕
+2023-10-27 09:57:48 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - blogView 更新完毕
+2023-10-27 09:57:48 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - blogView 更新完毕
+2023-10-27 09:57:48 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - blogView 更新完毕
+2023-10-27 09:57:48 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - blogView 更新完毕
+2023-10-27 09:57:48 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - blogView 更新完毕
+2023-10-27 09:57:48 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - blogView 更新完毕
+2023-10-27 09:57:48 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - blogLike 更新完毕
+2023-10-27 09:57:48 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - blogLike 更新完毕
+2023-10-27 09:57:48 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - blogLike 更新完毕
+2023-10-27 09:57:48 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - blogLike 更新完毕
+2023-10-27 09:57:48 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - blogLike 更新完毕
+2023-10-27 09:57:48 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - blogLike 更新完毕
+2023-10-27 09:57:48 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - blogLike 更新完毕
+2023-10-27 09:57:48 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - blogLike 更新完毕
+2023-10-27 09:57:48 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - blogLike 更新完毕
+2023-10-27 09:57:48 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - blogLike 更新完毕
+2023-10-27 09:57:48 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - blogLike 更新完毕
+2023-10-27 09:57:48 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - cLike 更新完毕
+2023-10-27 09:57:48 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - cLike 更新完毕
+2023-10-27 09:57:49 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - cLike 更新完毕
+2023-10-27 09:57:49 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - cLike 更新完毕
+2023-10-27 09:57:49 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - cLike 更新完毕
+2023-10-27 09:57:49 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - cLike 更新完毕
+2023-10-27 09:57:49 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - cLike 更新完毕
+2023-10-27 09:57:49 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - cLike 更新完毕
+2023-10-27 09:57:49 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - rLikee 更新完毕
+2023-10-27 09:57:49 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - rLikee 更新完毕
+2023-10-27 09:57:49 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - rLikee 更新完毕
+2023-10-27 09:57:49 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - rLikee 更新完毕
+2023-10-27 09:57:49 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - rLikee 更新完毕
+2023-10-27 09:57:49 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - rLikee 更新完毕
+2023-10-27 09:57:49 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - rLikee 更新完毕
+2023-10-27 09:57:49 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - rLikee 更新完毕
+2023-10-27 09:57:49 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - rLikee 更新完毕
+2023-10-27 09:57:49 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - redis写入数据库完毕
+2023-10-27 09:57:49 [SpringApplicationShutdownHook] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2023-10-27 09:57:49 [SpringApplicationShutdownHook] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2023-10-27 09:58:03 [main] INFO  com.blue.Demo7Application - Starting Demo7Application using Java 1.8.0_231 on SK-20220805NLKE with PID 9320 (D:\code\demo7\target\classes started by 齐进帅 in D:\code\demo7)
+2023-10-27 09:58:03 [main] INFO  com.blue.Demo7Application - No active profile set, falling back to 1 default profile: "default"
+2023-10-27 09:58:04 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2023-10-27 09:58:04 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2023-10-27 09:58:04 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 21 ms. Found 0 Redis repository interfaces.
+2023-10-27 09:58:06 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 80 (http)
+2023-10-27 09:58:06 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2023-10-27 09:58:06 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.80]
+2023-10-27 09:58:06 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2023-10-27 09:58:06 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3212 ms
+2023-10-27 09:58:09 [main] INFO  com.blue.controller.ListenHandler - 数据初始化开始...
+2023-10-27 09:58:10 [main] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2023-10-27 09:58:11 [main] INFO  com.blue.controller.ListenHandler - 数据已写入redis...
+2023-10-27 09:58:12 [main] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page: class path resource [static/index.html]
+2023-10-27 09:58:12 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 80 (http) with context path ''
+2023-10-27 09:58:12 [main] INFO  com.blue.Demo7Application - Started Demo7Application in 10.302 seconds (JVM running for 11.661)
+2023-10-27 09:59:20 [http-nio-80-exec-2] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-10-27 09:59:20 [http-nio-80-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2023-10-27 09:59:20 [http-nio-80-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 2 ms
+2023-10-27 10:00:07 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - 开始关闭...
+2023-10-27 10:00:07 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - blogView 更新完毕
+2023-10-27 10:00:07 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - blogView 更新完毕
+2023-10-27 10:00:07 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - blogView 更新完毕
+2023-10-27 10:00:07 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - blogView 更新完毕
+2023-10-27 10:00:07 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - blogView 更新完毕
+2023-10-27 10:00:07 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - blogView 更新完毕
+2023-10-27 10:00:07 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - blogView 更新完毕
+2023-10-27 10:00:07 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - blogView 更新完毕
+2023-10-27 10:00:07 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - blogView 更新完毕
+2023-10-27 10:00:07 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - blogView 更新完毕
+2023-10-27 10:00:07 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - blogView 更新完毕
+2023-10-27 10:00:07 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - blogLike 更新完毕
+2023-10-27 10:00:07 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - blogLike 更新完毕
+2023-10-27 10:00:07 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - blogLike 更新完毕
+2023-10-27 10:00:07 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - blogLike 更新完毕
+2023-10-27 10:00:07 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - blogLike 更新完毕
+2023-10-27 10:00:07 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - blogLike 更新完毕
+2023-10-27 10:00:07 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - blogLike 更新完毕
+2023-10-27 10:00:07 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - blogLike 更新完毕
+2023-10-27 10:00:07 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - blogLike 更新完毕
+2023-10-27 10:00:07 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - blogLike 更新完毕
+2023-10-27 10:00:07 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - blogLike 更新完毕
+2023-10-27 10:00:07 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - cLike 更新完毕
+2023-10-27 10:00:07 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - cLike 更新完毕
+2023-10-27 10:00:07 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - cLike 更新完毕
+2023-10-27 10:00:07 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - cLike 更新完毕
+2023-10-27 10:00:07 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - cLike 更新完毕
+2023-10-27 10:00:07 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - cLike 更新完毕
+2023-10-27 10:00:07 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - cLike 更新完毕
+2023-10-27 10:00:07 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - cLike 更新完毕
+2023-10-27 10:00:07 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - rLikee 更新完毕
+2023-10-27 10:00:07 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - rLikee 更新完毕
+2023-10-27 10:00:07 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - rLikee 更新完毕
+2023-10-27 10:00:07 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - rLikee 更新完毕
+2023-10-27 10:00:07 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - rLikee 更新完毕
+2023-10-27 10:00:07 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - rLikee 更新完毕
+2023-10-27 10:00:07 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - rLikee 更新完毕
+2023-10-27 10:00:07 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - rLikee 更新完毕
+2023-10-27 10:00:07 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - rLikee 更新完毕
+2023-10-27 10:00:07 [SpringApplicationShutdownHook] INFO  com.blue.controller.ListenHandler - redis写入数据库完毕
+2023-10-27 10:00:07 [SpringApplicationShutdownHook] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2023-10-27 10:00:07 [SpringApplicationShutdownHook] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed

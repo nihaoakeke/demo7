@@ -121,6 +121,7 @@ public class LinkService extends ServiceImpl<LinkDao, Link> {
         qw.eq("fromUser",fromuser);
         qw.orderByDesc("time");
         qw.eq("flag",0);
+        qw.ne("message","0");
         List<Link> linkList = linkDao.selectList(qw);
         return linkList;
     }
@@ -141,6 +142,18 @@ public class LinkService extends ServiceImpl<LinkDao, Link> {
     }
 
 
+    public Boolean okFlag(Integer fromuser,Integer touser)
+    {
+        QueryWrapper qw = new QueryWrapper();
+        qw.eq("fromUser",fromuser);
+        qw.eq("toUser",touser);
+        qw.ne("message","0");
+        Link link =linkDao.selectOne(qw);
+        link.setFlag(1);
+        linkDao.updateById(link);
+        return true;
+
+    }
     /**
      * 通过好友申请
      * @param fromuser
@@ -237,6 +250,7 @@ public class LinkService extends ServiceImpl<LinkDao, Link> {
             num++;
             user.setUFollowers(num);
             userDao.updateById(user);
+            linkDao.updateById(link);
         }
 
         return true;

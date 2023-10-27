@@ -230,7 +230,16 @@ public class LinkController {
         return new Result(code, num ,msg);
     }
 
-
+//
+//    @GetMapping("/okFlag/{fromuser}/{touser}")
+//    public Result okFlag(@PathVariable Integer fromuser,@PathVariable Integer touser)
+//    {
+//        Boolean num = linkService.okFlag(fromuser,touser);
+//
+//        Integer code = num !=false ? Code.GET_OK :Code.GET_ERR;
+//        String msg = num != false?"数据查询成功":"数据查询失败，请重试";
+//        return new Result(code, num ,msg);
+//    }
 
 
 
