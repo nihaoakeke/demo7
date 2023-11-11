@@ -1,7 +1,6 @@
 package com.blue.AOP;
 
 import com.blue.config.Log;
-import com.sun.org.slf4j.internal.LoggerFactory;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.AfterReturning;
@@ -12,15 +11,12 @@ import org.springframework.stereotype.Component;
 
 import java.lang.reflect.Method;
 import java.util.Arrays;
-import java.util.logging.Logger;
+
 
 @Slf4j
 @Aspect
 @Component
 public class LogAspect {
-
-    //private static final Logger logger = LoggerFactory.getLogger(LogAspect.class);
-
     /**
      * 定义@Before增强，拦截带有@Log注解的方法，并记录操作日志
      */
@@ -37,8 +33,6 @@ public class LogAspect {
         MethodSignature signature = (MethodSignature) joinPoint.getSignature();
         Method method = signature.getMethod();
         Log logAnnotation = method.getAnnotation(Log.class);
-
-        // 记录操作日志 实际开发中这里可以改为插入数据库
         log.info("方法:{}.{}, 参数:{}, 操作:{}", className, methodName, Arrays.toString(args), logAnnotation.operation());
     }
 
@@ -56,13 +50,11 @@ public class LogAspect {
         Method method = signature.getMethod();
         Log logAnnotation = method.getAnnotation(Log.class);
 
-        // 获取方法返回结果是否成功
         boolean isSuccess = true;
         if (result != null && result instanceof Boolean) {
             isSuccess = (boolean) result;
         }
 
-        // 记录操作日志及返回结果
         log.info("方法:{}.{}, 参数:{}, 操作:{}, 返回结果:{}",
                 className, methodName, Arrays.toString(args), logAnnotation.operation(), isSuccess);
     }

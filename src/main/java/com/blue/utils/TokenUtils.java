@@ -16,8 +16,8 @@ import java.util.Date;
 
 public class TokenUtils {
 
-    //token到期时间10小时
-    private static final long EXPIRE_TIME= 10*60*60*1000;
+    //token到期时间7天
+    private static final long EXPIRE_TIME= 7*24*60*60*1000;
     //密钥盐
     private static final String TOKEN_SECRET="ljdyaishijin**3nkjnj??";
 
@@ -26,8 +26,10 @@ public class TokenUtils {
      * @param user
      * @return
      */
-    public static String sign(User user){
+    public static String sign(User user,String ip){
 
+        System.out.println(user.getUId());
+        System.out.println(user.getUFlag());
         String token=null;
         System.out.println("jingguole----------->>>>>>>>>>>>>>>>>>");
         try {
@@ -37,8 +39,10 @@ public class TokenUtils {
 //                    .withIssuer("auth0")
                     .withIssuer("Authorization")
                     //存放数据
-                    .withClaim("uName",user.getUName())
-                    .withClaim("uId",user.getUId())
+                    .withClaim("username",user.getUname())
+                    .withClaim("uid",user.getUId().toString())
+                    .withClaim("uflag",user.getUFlag().toString())
+                    .withClaim("uip",ip.toString())
                     //过期时间
                     .withExpiresAt(expireAt)
                     .sign(Algorithm.HMAC256(TOKEN_SECRET));
@@ -61,7 +65,8 @@ public class TokenUtils {
             JWTVerifier jwtVerifier= JWT.require(Algorithm.HMAC256(TOKEN_SECRET)).withIssuer("Authorization").build();
             DecodedJWT decodedJWT=jwtVerifier.verify(token);
             System.out.println("认证通过：");
-            System.out.println("uName: " + decodedJWT.getClaim("uName").asString());
+            System.out.println("username: " + decodedJWT.getClaim("username").asString());
+            System.out.println("uid"+decodedJWT.getClaim("uid").asString());
             System.out.println("过期时间：      " + decodedJWT.getExpiresAt());
         } catch (IllegalArgumentException | JWTVerificationException e) {
             //抛出错误即为验证不通过
@@ -70,22 +75,48 @@ public class TokenUtils {
         return true;
     }
 
-    public String getToken(HttpServletRequest request) {
-        Cookie[] cookies = request.getCookies();
-        for (Cookie c :
-                cookies) {
-            if (c.getName().equals("token")) {
-                return c.getValue();
-            }
-        }
-        return null;
+    public static String getUID(String token)
+    {
+        JWTVerifier jwtVerifier= JWT.require(Algorithm.HMAC256(TOKEN_SECRET)).withIssuer("Authorization").build();
+        DecodedJWT decodedJWT=jwtVerifier.verify(token);
+        return decodedJWT.getClaim("uid").asString();
+    }
+    public static String getuFlag(String token)
+    {
+        JWTVerifier jwtVerifier= JWT.require(Algorithm.HMAC256(TOKEN_SECRET)).withIssuer("Authorization").build();
+        DecodedJWT decodedJWT=jwtVerifier.verify(token);
+        return decodedJWT.getClaim("uflag").asString();
+    }
+    public static String getuIp(String token)
+    {
+        JWTVerifier jwtVerifier= JWT.require(Algorithm.HMAC256(TOKEN_SECRET)).withIssuer("Authorization").build();
+        DecodedJWT decodedJWT=jwtVerifier.verify(token);
+        return decodedJWT.getClaim("uIp").asString();
     }
 
-    public static HttpServletRequest getRequest() {
-        ServletRequestAttributes requestAttributes = (ServletRequestAttributes) RequestContextHolder
-                .getRequestAttributes();
-        return requestAttributes == null ? null : requestAttributes.getRequest();
-    }
+
+
+//    public String getToken(HttpServletRequest request) {
+//        Cookie[] cookies = request.getCookies();
+//        for (Cookie c :
+//                cookies) {
+//            if (c.getName().equals("token")) {
+//                return c.getValue();
+//            }
+//        }
+//        return null;
+//
+////        JWTVerifier jwtVerifier= JWT.require(Algorithm.HMAC256(TOKEN_SECRET)).withIssuer("Authorization").build();
+////        DecodedJWT decodedJWT=jwtVerifier.verify(token);
+////        return decodedJWT.getClaim("uId").asString();
+//
+//    }
+//
+//    public static HttpServletRequest getRequest() {
+//        ServletRequestAttributes requestAttributes = (ServletRequestAttributes) RequestContextHolder
+//                .getRequestAttributes();
+//        return requestAttributes == null ? null : requestAttributes.getRequest();
+//    }
 
 
 

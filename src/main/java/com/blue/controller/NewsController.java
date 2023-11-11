@@ -3,6 +3,7 @@ package com.blue.controller;
 import com.alibaba.druid.util.StringUtils;
 import com.blue.config.Log;
 import com.blue.dao.NewsDao;
+import com.blue.domain.Blog;
 import com.blue.domain.Code;
 import com.blue.domain.News;
 import com.blue.domain.Result;
@@ -13,32 +14,46 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 @Slf4j
 @RestController
 @RequestMapping("/news")
 public class NewsController {
-
-
     @Autowired
     private NewsDao newsDao;
-
     @Autowired
     private NewsService newsService;
-
-
+    /**
+     * 查询公告，根据news_id进行查询
+     * @param id
+     * @return
+     */
     @Log(operation = "查询公告根据id主键")
     @GetMapping("/{id}")
     public Result getById(@PathVariable Integer id) {
-        News news = newsDao.selectById(id);
-        Integer code = news != null ? Code.GET_OK : Code.GET_ERR;
-        String msg = news != null ? "数据查询成功" : "数据查询失败，请重试！";
-        String name = news.getNContent();
-        news.setNContent(EmojiParser.parseToUnicode(name));
-        return new Result(code,news,msg);
+        if(id==0) {
+            List<News> newsList = newsService.list();
+            newsList.sort(Comparator.comparing(News::getNewsTime, Collections.reverseOrder()));
+            Integer code = newsList != null ? Code.GET_OK : Code.GET_ERR;
+            log.info("添加用户：{}", newsList);
+            String msg = newsList != null ? "数据查询成功" : "数据查询失败，请重试！";
+            Iterator<News> iterator = newsList.iterator();
+            while (iterator.hasNext()){
+                News news = iterator.next();
+                String content = news.getNewsContent();
+                news.setNewsContent(EmojiParser.parseToUnicode(content));
+            }
+            return new Result(code,newsList,msg);
+        }
+        else{
+            News news = newsDao.selectById(id);
+            Integer code = news != null ? Code.GET_OK : Code.GET_ERR;
+            String msg = news != null ? "数据查询成功" : "数据查询失败，请重试！";
+            String name = news.getNewsContent();
+            news.setNewsContent(EmojiParser.parseToUnicode(name));
+            return new Result(code,news,msg);
+        }
     }
 
     @Log(operation = "查询本用户发表的公告")
@@ -50,43 +65,25 @@ public class NewsController {
         Iterator<News> iterator = newsList.iterator();
         while (iterator.hasNext()){ //判断迭代器是否有元素
             News news = iterator.next();//获取集合下一个元素
-            String name = news.getNContent();
-            news.setNContent(EmojiParser.parseToUnicode(name));
+            String name = news.getNewsContent();
+            news.setNewsContent(EmojiParser.parseToUnicode(name));
         }
-        return new Result(code,newsList,msg);
-    }
-
-    @Log(operation = "得到用户发表全部公告")
-    @GetMapping("/all")
-    public Result getAll() {
-
-        List<News> newsList = newsService.selectAllByTime();
-        Integer code = newsList != null ? Code.GET_OK : Code.GET_ERR;
-        log.info("添加用户：{}", newsList);
-        String msg = newsList != null ? "数据查询成功" : "数据查询失败，请重试！";
-        Iterator<News> iterator = newsList.iterator();
-        while (iterator.hasNext()){ //判断迭代器是否有元素
-            News news = iterator.next();//获取集合下一个元素
-            String name = news.getNContent();
-            news.setNContent(EmojiParser.parseToUnicode(name));
-        }
-
         return new Result(code,newsList,msg);
     }
 
 
 
     @Log(operation = "用户发布公告")
-    @PostMapping
+    @PostMapping("/manager")
     public Result saveNews(@RequestBody News news){
 
-        if(news.getNContent()!=null){
-            String nameCovert = EmojiParser.parseToAliases(news.getNContent());
-            news.setNContent(nameCovert);
+        if(news.getNewsContent()!=null){
+            String nameCovert = EmojiParser.parseToAliases(news.getNewsContent());
+            news.setNewsContent(nameCovert);
         }
         SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
         Date date = new Date(System.currentTimeMillis());
-        news.setNTime(date);
+        news.setNewsTime(date);
 
         Integer num =newsDao.insert(news);
         Integer code = num!=null?Code.SAVE_OK:Code.SAVE_ERR;
@@ -95,7 +92,7 @@ public class NewsController {
     }
 
     @Log(operation = "删除公告")
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/manager/{id}")
     public Result deleteNews(@PathVariable Integer id)
     {
         Integer num =newsDao.deleteById(id);
@@ -105,17 +102,18 @@ public class NewsController {
     }
 
     @Log(operation = "更新公告信息")
-    @PutMapping
+    @PutMapping("/manager")
     public Result updateNews(@RequestBody News news)
     {
         Integer num = newsDao.updateById(news);
-        if(news.getNContent()!=null){
-            String nameCovert = EmojiParser.parseToAliases(news.getNContent());
-            news.setNContent(nameCovert);
+        if(news.getNewsContent()!=null){
+            String nameCovert = EmojiParser.parseToAliases(news.getNewsContent());
+            news.setNewsContent(nameCovert);
         }
         Integer code = num !=null ? Code.UPDATE_OK :Code.UPDATE_ERR;
         String msg = num != null?"数据更新成功":"数据更新失败，请重试";
-        return new Result(code,news,msg);
+        News news1 = newsDao.selectById(news.getNewsId());
+        return new Result(code,news1,msg);
     }
 
 }

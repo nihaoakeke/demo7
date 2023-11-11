@@ -29,7 +29,7 @@ public class ChatService extends ServiceImpl<ChatDao, Chat> {
     public Boolean okFlag(Integer id)
     {
         Chat chat =chatDao.selectById(id);
-        chat.setFlag(1);
+        chat.setChatFlag(1);
         chatDao.updateById(chat);
         return true;
     }
@@ -45,11 +45,11 @@ public class ChatService extends ServiceImpl<ChatDao, Chat> {
     {
 
         QueryWrapper qw = new QueryWrapper();
-        qw.eq("fromUser",fromuser);
-        qw.eq("touser",touser);
-        qw.select("time");
-        qw.select("flag");
-        qw.select("message");
+        qw.eq("from_user",fromuser);
+        qw.eq("to_user",touser);
+//        qw.select("time");
+//        qw.select("flag");
+//        qw.select("message");
         List<Chat> chatList = chatDao.selectList(qw);
         return chatList;
     }
@@ -62,8 +62,8 @@ public class ChatService extends ServiceImpl<ChatDao, Chat> {
     public List<Chat> selectMessageByFrom(Integer fromuser)
     {
         QueryWrapper qw = new QueryWrapper();
-        qw.eq("fromUser",fromuser);
-        qw.orderByDesc("time");
+        qw.eq("from_user",fromuser);
+        qw.orderByDesc("chat_time");
         List<Chat> chatList = chatDao.selectList(qw);
         return chatList;
     }
@@ -76,8 +76,8 @@ public class ChatService extends ServiceImpl<ChatDao, Chat> {
     public List<Chat> selectMessageByTo(Integer touser)
     {
         QueryWrapper qw = new QueryWrapper();
-        qw.eq("toUser",touser);
-        qw.orderByDesc("time");
+        qw.eq("to_user",touser);
+        qw.orderByDesc("chat_time");
         List<Chat> chatList = chatDao.selectList(qw);
         return chatList;
     }
@@ -91,9 +91,9 @@ public class ChatService extends ServiceImpl<ChatDao, Chat> {
     public List<Chat> selectMessageByFromUnread(Integer fromuser)
     {
         QueryWrapper qw = new QueryWrapper();
-        qw.eq("fromUser",fromuser);
-        qw.orderByDesc("time");
-        qw.eq("flag",0);
+        qw.eq("from_user",fromuser);
+        qw.orderByDesc("chat_time");
+        qw.eq("chat_flag",0);
         List<Chat> chatList = chatDao.selectList(qw);
         return chatList;
     }
@@ -107,9 +107,9 @@ public class ChatService extends ServiceImpl<ChatDao, Chat> {
     public List<Chat> selectMessageByToUnread(Integer touser)
     {
         QueryWrapper qw = new QueryWrapper();
-        qw.eq("toUser",touser);
-        qw.orderByDesc("time");
-        qw.eq("flag",0);
+        qw.eq("to_user",touser);
+        qw.orderByDesc("chat_time");
+        qw.eq("chat_flag",0);
         List<Chat> chatList = chatDao.selectList(qw);
         return chatList;
     }

@@ -1,6 +1,10 @@
 package com.blue.service;
 
-import com.sun.org.slf4j.internal.LoggerFactory;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+//import com.sun.org.slf4j.internal.LoggerFactory;
 import io.lettuce.core.dynamic.annotation.Value;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
@@ -12,7 +16,8 @@ import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeUtility;
 import java.io.File;
 import java.util.List;
-import java.util.logging.Logger;
+import java.util.Properties;
+//import java.util.logging.Logger;
 
 @Service("mailService")
 public class MailService {
@@ -34,23 +39,23 @@ public class MailService {
         //logger.info("邮件发送成功");
     }
 
-    public void sendAttachmentsMail(String to, String title, String cotent, List<File> fileList){
-        MimeMessage message = mailSender.createMimeMessage();
-        try {
-            MimeMessageHelper helper = new MimeMessageHelper(message,true);
-            helper.setFrom(from);
-            helper.setTo(to);
-            helper.setSubject(title);
-            helper.setText(cotent);
-            String fileName = null;
-            for (File file:fileList) {
-                fileName = MimeUtility.encodeText(file.getName(), "GB2312", "B");
-                helper.addAttachment(fileName, file);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        mailSender.send(message);
-        //logger.info("邮件发送成功");
-    }
+//    public void sendAttachmentsMail(String to, String title, String cotent, List<File> fileList){
+//        MimeMessage message = mailSender.createMimeMessage();
+//        try {
+//            MimeMessageHelper helper = new MimeMessageHelper(message,true);
+//            helper.setFrom(from);
+//            helper.setTo(to);
+//            helper.setSubject(title);
+//            helper.setText(cotent);
+//            String fileName = null;
+//            for (File file:fileList) {
+//                fileName = MimeUtility.encodeText(file.getName(), "GB2312", "B");
+//                helper.addAttachment(fileName, file);
+//            }
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//        mailSender.send(message);
+//        //logger.info("邮件发送成功");
+//    }
 }

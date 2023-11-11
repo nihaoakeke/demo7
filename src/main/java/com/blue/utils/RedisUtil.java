@@ -8,6 +8,7 @@ import org.springframework.data.redis.core.ZSetOperations;
 import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -332,9 +333,9 @@ public class RedisUtil {
 //     * @param hashKeys
 //     * @return 删除成功的 数量
 //     */
-//    public Long delete(String key, String... hashKeys) {
-//        return redisTemplate.opsForHash().delete(key, hashKeys);
-//    }
+    public Long delete(String key, String... hashKeys) {
+        return redisTemplate.opsForHash().delete(key, hashKeys);
+    }
 //
 //    /**
 //     * 给指定 hash 的 hashkey 做增减操作
@@ -597,7 +598,7 @@ public class RedisUtil {
      * @param key 键
      * @return 值
      */
-    public Object get(String key){
+    public  Object get(String key){
         return key==null?null:redisTemplate.opsForValue().get(key);
     }
 
@@ -1202,6 +1203,31 @@ public class RedisUtil {
      */
     public Set<ZSetOperations.TypedTuple<String>> zReverseRangeWithScores(String key, long start, long end) {
         return stringRedisTemplate.opsForZSet().reverseRangeWithScores(key, start, end);
+    }
+
+    /**
+     * 获取集合中的某一个元素
+     * @param key
+     * @param value
+     * @return
+     */
+
+    public Double zScore(String key, String value) {
+        return stringRedisTemplate.opsForZSet().score(key, value);
+    }
+
+    /**
+     * 删除某一个键值操作
+     * @param key
+     */
+    public void del(String... key) {
+        if (key != null && key.length > 0) {
+            if (key.length == 1) {
+                redisTemplate.delete(key[0]);
+            } else {
+                redisTemplate.delete((Collection<String>) CollectionUtils.arrayToList(key));
+            }
+        }
     }
 
 

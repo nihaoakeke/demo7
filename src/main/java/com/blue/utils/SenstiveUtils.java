@@ -1,23 +1,84 @@
 package com.blue.utils;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.core.io.DefaultResourceLoader;
+import org.springframework.core.io.Resource;
+import org.springframework.util.CollectionUtils;
+
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
+import java.util.*;
+
+
 
 public class SenstiveUtils {
     private static Map sensitiveWords = null;
     private static List<Character> separatorWords = null;
 
 //    List<String> list, List<Character> separator
+
+
+
+    private static List<String> readWordsFile() {
+        List<String> list = new ArrayList<>();
+        InputStream inputStream = null;
+        InputStreamReader inputStreamReader = null;
+        BufferedReader bufferedReader = null;
+        try {
+            Resource resource = new DefaultResourceLoader().getResource("classpath:words.txt");
+            inputStream = resource.getInputStream();
+            inputStreamReader = new InputStreamReader(inputStream, StandardCharsets.UTF_8);
+            bufferedReader = new BufferedReader(inputStreamReader);
+            String txt = "";
+            while (StringUtils.isNotBlank(txt = bufferedReader.readLine())) {
+                list.addAll(
+                        Arrays.asList(
+                                StringUtils.split(
+                                        StringUtils.deleteWhitespace(StringUtils.replace(txt, "，", ",")),
+                                        ","
+                                )
+                        )
+                );
+            }
+            bufferedReader.close();
+            inputStreamReader.close();
+            inputStream.close();
+        } catch (Exception e) {
+
+        } finally {
+            try {
+                if (bufferedReader != null) {
+                    bufferedReader.close();
+                }
+                if (inputStreamReader != null) {
+                    inputStreamReader.close();
+                }
+                if (inputStream != null) {
+                    inputStream.close();
+                }
+            } catch (Exception e) {
+
+            }
+        }
+        return list;
+    }
+
     public static void init() {
-        List<String> list = new ArrayList<>(); List<Character> separator = new ArrayList<>();
-        list.add("sb");
-        list.add("傻逼");
-        list.add("cnm");
-        list.add("傻瓜");
-        list.add("你妈");
-        list.add("他妈的");
+//        List<String> list = new ArrayList<>();
+//        list.add("sb");
+//        list.add("傻逼");
+//        list.add("cnm");
+//        list.add("傻瓜");
+//        list.add("你妈");
+//        list.add("他妈的");
+
+        List<String> list =new ArrayList<>();
+        list = readWordsFile();
+        System.out.println(list);
+        List<Character> separator = new ArrayList<>();
         separator.add(',');
         separator.add('，');
         separator.add('/');

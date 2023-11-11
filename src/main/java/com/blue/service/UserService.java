@@ -2,17 +2,36 @@ package com.blue.service;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.blue.dao.UserDao;
-import com.blue.domain.User;
+import com.blue.dao.*;
+import com.blue.domain.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
-@Service("userService")
-public class UserService extends ServiceImpl<UserDao, User> {
+@Service
+//public class UserService  extends ServiceImpl<UserMapper, User>{
+public class UserService extends ServiceImpl<UserMapper, User>{
 
-    @Autowired UserDao userDao;
+    @Autowired
+    private BlogLikeDao blogLikeDao;
+
+    @Autowired
+    private FollowLinkDao followLinkDao;
+
+    @Autowired
+    private BlogDao blogDao;
+
+    @Autowired
+    private CommentLikeDao commentLikeDao;
+    @Autowired
+    UserMapper userMapper;
+    @Autowired
+    CollectDao collectDao;
 
 
     /**
@@ -24,8 +43,8 @@ public class UserService extends ServiceImpl<UserDao, User> {
     public User selectByeamil(String email)
     {
         QueryWrapper qw = new QueryWrapper();
-        qw.eq("uEmail",email);
-        User user = userDao.selectOne(qw);
+        qw.eq("user_email",email);
+        User user = userMapper.selectOne(qw);
         return user;
     }
 
@@ -38,8 +57,8 @@ public class UserService extends ServiceImpl<UserDao, User> {
     public User selectByname(String name)
     {
         QueryWrapper qw = new QueryWrapper();
-        qw.eq("uName",name);
-        User user = userDao.selectOne(qw);
+        qw.eq("user_name",name);
+        User user = userMapper.selectOne(qw);
         return user;
     }
 
@@ -52,8 +71,8 @@ public class UserService extends ServiceImpl<UserDao, User> {
    public User selectBynickname(String nickname)
    {
        QueryWrapper qw = new QueryWrapper();
-       qw.eq("uNickname",nickname);
-       User user = userDao.selectOne(qw);
+       qw.eq("user_nickname",nickname);
+       User user = userMapper.selectOne(qw);
        return user;
    }
 
@@ -65,8 +84,8 @@ public class UserService extends ServiceImpl<UserDao, User> {
    public List<User> selectLikenickname(String nickname)
    {
        QueryWrapper qw = new QueryWrapper();
-       qw.like("uNickname",nickname);
-       List<User> userList = userDao.selectList(qw);
+       qw.like("user_nickname",nickname);
+       List<User> userList = userMapper.selectList(qw);
        return userList;
    }
 
@@ -79,18 +98,110 @@ public class UserService extends ServiceImpl<UserDao, User> {
     public List<User> selectLikename(String name)
     {
         QueryWrapper qw = new QueryWrapper();
-        qw.like("uName",name);
-        List<User> userList = userDao.selectList(qw);
+        qw.like("user_name",name);
+        List<User> userList = userMapper.selectList(qw);
         return userList;
     }
 
 
 
+    public List<Collect> selectCollectByuid(Integer uid)
+    {
+        QueryWrapper qw = new QueryWrapper();
+        qw.like("user_id",uid);
+        List<Collect>  collectList=collectDao.selectList(qw);
+        return collectList;
+    }
 
 
 
+    public List<BlogLike> selectBlogLike(Integer uid)
+    {
+        QueryWrapper qw = new QueryWrapper<>();
+        qw.eq("author_id",uid);
+        List<BlogLike> blogLikes = blogLikeDao.selectList(qw);
+        return blogLikes;
+    }
+
+    public List<CommentLike> selectCommentLike(Integer uid)
+    {
+        QueryWrapper qw =new QueryWrapper<>();
+        qw.eq("author_id",uid);
+        List<CommentLike> commentLikes =commentLikeDao.selectList(qw);
+        return commentLikes;
+    }
 
 
+    public Boolean updateUserFlag(Integer uid,Integer flag)
+    {
+        Integer num = 0;
+        if(flag==1){
+            User user =userMapper.selectById(uid);
+            user.setUFlag(flag);
+            num =userMapper.updateById(user);
+        }else if(flag==2){
+            User user = userMapper.selectById(uid);
+            user.setUFlag(flag);
+            num =userMapper.updateById(user);
+            QueryWrapper qw = new QueryWrapper<>();
+            qw.eq("user_id",uid);
+            List<Blog> blogList = blogDao.selectList(qw);
+            for(Blog blog : blogList){
+                blog.setBlogFlag(0);
+                blogDao.updateById(blog);
+            }
+        }else if(flag==0)
+        {
+            User user = userMapper.selectById(uid);
+            user.setUFlag(flag);
+            num =userMapper.updateById(user);
+            QueryWrapper qw = new QueryWrapper<>();
+            qw.eq("user_id",uid);
+            List<Blog> blogList = blogDao.selectList(qw);
+            for(Blog blog : blogList){
+                blog.setBlogFlag(0);
+                blogDao.updateById(blog);
+            }
+        }
+
+        return num!=0?true:false;
+
+    }
+
+
+    public Boolean checkFollow(Integer fromuser,Integer touser){
+        QueryWrapper qw = new QueryWrapper<>();
+        qw.eq("from_user",fromuser);
+        qw.eq("to_user",touser);
+        FollowLink followLink = followLinkDao.selectOne(qw);
+        return followLink!=null?true:false;
+    }
+
+
+    public List<Blog> selectFollowBlog(Integer uid)
+    {
+        QueryWrapper qw =new QueryWrapper<>();
+        qw.eq("from_user",uid);
+      List<FollowLink> followLinkList = followLinkDao.selectList(qw);
+      List<Blog> blogList =new ArrayList<>();
+      for(FollowLink followLink:followLinkList){
+          QueryWrapper qw2 =new QueryWrapper<>();
+          qw2.eq("user_id",followLink.getToUser());
+          List<Blog> blogList1 = blogDao.selectList(qw2);
+          blogList.addAll(blogList1);
+      }
+      blogList.sort(Comparator.comparing(Blog::getBlogTime, Collections.reverseOrder()));
+      return blogList;
+    }
+
+    public Boolean checkCollect(Integer uid,Integer blogId)
+    {
+        QueryWrapper qw = new QueryWrapper<>();
+        qw.eq("user_id",uid);
+        qw.eq("blog_id",blogId);
+        Collect collect =collectDao.selectOne(qw);
+        return collect!=null?true:false;
+    }
 
 
 }

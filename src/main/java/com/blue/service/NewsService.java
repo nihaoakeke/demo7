@@ -27,8 +27,8 @@ public class NewsService extends ServiceImpl<NewsDao, News> {
     public List<News> selectByUid(Integer uid)
     {
         QueryWrapper qw = new QueryWrapper();
-        qw.eq("uId",uid);
-        qw.orderByDesc("nTime");
+        qw.eq("user_id",uid);
+        qw.orderByDesc("news_time");
         List<News> newsList = newsDao.selectList(qw);
         return newsList;
     }
@@ -40,7 +40,7 @@ public class NewsService extends ServiceImpl<NewsDao, News> {
     public List<News> selectAllByTime()
     {
         QueryWrapper qw = new QueryWrapper();
-        qw.orderByDesc("nTime");
+        qw.orderByDesc("news_time");
         List<News> newsList = newsDao.selectList(qw);
         return newsList;
     }
